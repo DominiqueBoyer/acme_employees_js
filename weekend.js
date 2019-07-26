@@ -135,7 +135,25 @@ spacer('');
 
 
 function displayManagementTree(employeeTree){
+  let tree=[];
+  tree.push(employeeTree.name);
+  let getName = function(obj){
+    tree.push(obj.name);
+  }
+  let team = employeeTree.reports;
+  for (let i=0; i<team.length; i++){
+    let person = team[i];
+    getName(person);
+    if(person.reports){
+      getName(person.reports);
+    }
+  }
 
+
+
+  for (let i=0; i<tree.length; i++){
+    console.log(tree[i]);
+  }
 }
 
 spacer('displayManagementTree');
